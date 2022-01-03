@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>AlbumWeb</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="album">Dodaj album</a></li>
+            <li><a href="album/thedarksideofthemoon">Baza albumów</a></li>
+            <li><a href="#">Baza artystów</a></li>
+            <li><a href="#">Rankingi</a></li>
+        </ul>
+    </nav>
+    <h3>Formularz dodawania albumu</h3>
+    <form th:action="@{/album}" method="post" id="addAlbumForm">
+        <label for="name">Tytuł</label><br>
+        <input type="text" id="name" name="name"/><br>
+        <label for="author">Autor</label><br>
+        <input type="text" id="author" name="author"/><br>
+        <label for="releaseDate">Data premiery</label><br>
+        <input type="text" id="releaseDate" name="releaseDate"/><br>
+        <label for="playlist">Playlista</label><br>
+        <input type="text" id="playlist" name="playlist"/><br>
+        <label for="description">Opis</label><br>
+        <textarea id="description" name="description" cols="60" rows="15"></textarea><br>
+        <input id="button" type="submit" value="Dodaj album"/><br>
+    </form>
+</body>
+</html>

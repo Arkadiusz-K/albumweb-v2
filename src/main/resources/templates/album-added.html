@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>AlbumWeb</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="album">Dodaj album</a></li>
+        <li><a href="album/thedarksideofthemoon">Baza albumów</a></li>
+        <li><a href="#">Baza artystów</a></li>
+        <li><a href="#">Rankingi</a></li>
+    </ul>
+</nav>
+    <h1>Alarm added!</h1>
+    <p th:text="${album.name}">Test</p>
+</body>
+</html>

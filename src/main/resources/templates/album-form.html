@@ -3,7 +3,7 @@
       xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}">
     <title>AlbumWeb</title>
 </head>
 <body>
@@ -19,8 +19,6 @@
     <form th:action="@{/album}" method="post" id="addAlbumForm">
         <label for="name">Tytuł</label><br>
         <input type="text" id="name" name="name"/><br>
-        <label for="author">Autor</label><br>
-        <input type="text" id="author" name="author"/><br>
         <label for="releaseDate">Data premiery</label><br>
         <input type="text" id="releaseDate" name="releaseDate"/><br>
         <label for="playlist">Playlista</label><br>

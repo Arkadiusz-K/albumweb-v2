@@ -1,35 +1,37 @@
 package com.album.web.albums.album;
 
+import com.album.web.albums.author.Author;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name="album")
+@Table(name = "album")
 public class Album {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull(message = "Id cannot be null")
-    @Column(name="id")
-    private long id;
+    @Column(name = "id")
+    private long albumId;
     @NotNull(message = "Name cannot be null")
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
     @NotNull(message = "Author cannot be null")
-    @Column(name="author")
-    private String author;
-    @Column(name="releaseDate")
+    @OneToOne
+    private Author author;
+    @Column(name = "releaseDate")
     private String releaseDate;
     @Column(name="playlist")
     private String playlist;
     @Column(name="description")
     private String description;
-    @Column(name="numberOfVotes")
+    @Column(name = "numberOfVotes")
     private long numberOfVotes;
-    @Column(name="sumOfVotes")
+    @Column(name = "sumOfVotes")
     private double sumOfVotes;
 }

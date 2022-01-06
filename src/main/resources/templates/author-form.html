@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}">
@@ -14,7 +15,11 @@
         <li><a href="#">Rankingi</a></li>
     </ul>
 </nav>
-    <h1>Album added!</h1>
-    <p th:text="${album.name}">Test</p>
+<h3>Formularz dodawania autora</h3>
+<form th:action="@{/author}" method="post" id="addAuthorForm">
+    <label for="name">Nazwa autora</label><br>
+    <input type="text" id="name" name="name"/><br>
+    <input id="button" type="submit" value="Dodaj autora"/><br>
+</form>
 </body>
 </html>

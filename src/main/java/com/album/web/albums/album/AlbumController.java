@@ -1,11 +1,9 @@
 package com.album.web.albums.album;
 
 import com.album.web.albums.HibernateUtil;
-import com.album.web.albums.album.Album;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +13,7 @@ import java.util.List;
 public class AlbumController {
 
     @GetMapping
-    public String showForm(Model model){
+    public String showForm(){
         return "album-form";
     }
 
@@ -24,22 +22,22 @@ public class AlbumController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             List<Album> albums = session.createQuery("from Album", Album.class).list();
-            albums.forEach(a -> System.out.println(a.getName()));
+            albums.forEach(a -> System.out.println("Album name: " + a.getName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "album-form";
     }
 
-    @GetMapping("getAlbum")
-    public String getAlbum(@RequestParam("id") String id){
-        long idOfAlbum;
+    @GetMapping("{id}")
+    public String getAlbum(@PathVariable("id") Long albumId){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            idOfAlbum = Long.parseLong(id);
-            Album album = session.load(Album.class, idOfAlbum);
+            Album album = session.load(Album.class, albumId);
             System.out.println("------------ ALBUM ------------------");
             System.out.println("name: " + album.getName());
-            System.out.println("author: " + album.getAuthor());
+            System.out.println("author: " + album.getAuthor().getName());
+        } catch (Exception e){
+            e.printStackTrace();
         }
         return "album-form";
     }

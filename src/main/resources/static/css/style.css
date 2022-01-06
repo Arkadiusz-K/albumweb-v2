@@ -23,11 +23,12 @@ nav ul li{
 
 nav a{
     display: block;
-    padding: 0 10px 0 0;
+    padding: 0 5px 0 5px;
     color: darkred;
     font-size: 20px;
     line-height: 60px;
     text-decoration: none;
+    transition-duration: 0.2s;
 }
 
 nav a:hover{
@@ -43,6 +44,7 @@ nav a:hover{
     border-radius: 4px;
     transition-duration: 0.4s;
     text-transform: uppercase;
+    margin-top: 5px;
 }
 
 #button:hover{

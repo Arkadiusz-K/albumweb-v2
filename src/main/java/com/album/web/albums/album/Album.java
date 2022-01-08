@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
@@ -19,7 +18,7 @@ public class Album {
     @Column(name = "id")
     private long albumId;
     @NotNull(message = "Name cannot be null")
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
     @NotNull(message = "Author cannot be null")
     @OneToOne

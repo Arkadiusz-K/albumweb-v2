@@ -58,3 +58,17 @@ section{
     margin: 20px;
     background-color: #b9b398;
 }
+
+#searchBar{
+    padding: 5px 10px;
+}
+
+#searchBar label{
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+#searchBar input{
+    width: 150px;
+    height: 20px;
+}

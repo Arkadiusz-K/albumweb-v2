@@ -7,6 +7,12 @@
     <title>AlbumWeb</title>
 </head>
 <body>
+    <div id="searchBar">
+    <form action="#" th:action="@{/search}" th:object="${search}">
+        <label for="search">Szukaj: </label>
+        <input name="search" id="search">
+    </form>
+    </div>
     <nav>
         <ul>
             <li><a href="album">Dodaj album</a></li>
@@ -16,5 +22,6 @@
         </ul>
     </nav>
     <h4>Witaj na stronie głównej AlbumWeb</h4>
+    <p th:text="${searchedAlbum != null} ? ${searchedAlbum} : ''"></p>
 </body>
 </html>

@@ -66,6 +66,18 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>5.6.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-engine</artifactId>
+			<version>5.11.10.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.11.10.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

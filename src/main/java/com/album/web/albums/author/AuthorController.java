@@ -4,10 +4,7 @@ import com.album.web.albums.HibernateUtil;
 import com.album.web.albums.album.Album;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
 public class AuthorController {
 
     @GetMapping
-    public String showForm(Model model){
+    public String showForm(){
         return "author-form";
     }
 

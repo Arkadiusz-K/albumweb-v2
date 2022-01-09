@@ -1,8 +1,13 @@
 package com.album.web.albums.album;
 
 import com.album.web.albums.HibernateUtil;
+import com.album.web.albums.vote.Vote;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/album")
 public class AlbumController {
+    @Autowired
+    AlbumRepository albumRepository;
 
     @GetMapping
     public String showForm(){
@@ -99,5 +106,36 @@ public class AlbumController {
     @GetMapping("/thedarksideofthemoon")
     public String setAlbumPage(){
         return "album";
+    }
+
+    @PostMapping("/rateAlbum")
+    public String rateAlbum(@ModelAttribute("vote") Vote vote){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(" RATE ALBUM CONTROLLER -- &&&&&&&&&&&&&&&&& VOTE &&&&&&&&&&&&&&&&&");
+        vote.setVotingUser(auth.getName());
+
+        System.out.println("Albums name: " + vote.getAlbumName());
+        System.out.println("Username: " + vote.getVotingUser());
+        System.out.println("Vote: " + vote.getVote());
+        System.out.println("Id: " + vote.getVoteId());
+
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+
+            Query<Album> query = session.createQuery("from Album a where a.name=:name", Album.class);
+            query.setParameter("name", vote.getAlbumName());
+            Album album = query.getSingleResult();
+
+            vote.setAlbum(album);
+            session.save(vote);
+            transaction.commit();
+        } catch (Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return "home";
     }
 }

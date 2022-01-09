@@ -26,5 +26,6 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="com.album.web.albums.album.Album" />
         <mapping class="com.album.web.albums.author.Author" />
+        <mapping class="com.album.web.albums.vote.Vote" />
     </session-factory>
 </hibernate-configuration>

@@ -20,7 +20,7 @@ public class AlbumSearchController {
         System.out.println("SEARCH MAPPING: \n-----------------");
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            Query<Album> query = session.createQuery("from Album a where a.name=:name");
+            Query<Album> query = session.createQuery("from Album a where a.name=:name", Album.class);
             query.setParameter("name", search);
             Album album = query.getSingleResult();
             System.out.println("Album name: " + album.getName() + ", author's name: " + album.getAuthor().getName());
